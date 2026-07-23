@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barfly — Classic Cocktails, Ingredients & History</title>
+
+  <!-- Google Fonts: display serif, body sans, and a monospace for measurements -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============ HEADER / NAV ============
+       This exact header markup is repeated on every page. In a bigger
+       project you'd pull this into a shared "component", but with plain
+       HTML the simplest approach is just to copy it - a good reason to
+       eventually learn a framework once this stops feeling simple enough! -->
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="site-logo"><svg class="logo-butterfly" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g transform="translate(20,20)">
+          <ellipse cx="-7" cy="-5" rx="9" ry="6" fill="var(--brass)" opacity="0.9" transform="rotate(-20 -7 -5)" />
+          <ellipse cx="7" cy="-5" rx="9" ry="6" fill="var(--brass)" opacity="0.9" transform="rotate(20 7 -5)" />
+          <ellipse cx="-6" cy="6" rx="6" ry="5" fill="var(--rust)" opacity="0.9" transform="rotate(-15 -6 6)" />
+          <ellipse cx="6" cy="6" rx="6" ry="5" fill="var(--rust)" opacity="0.9" transform="rotate(15 6 6)" />
+          <line x1="0" y1="-10" x2="0" y2="10" stroke="var(--paper)" stroke-width="1.5" />
+        </g>
+      </svg>Bar<span>fly</span></a>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="cocktails.html">Cocktails</a>
+        <a href="ingredients.html">Ingredients</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Taste it. Take it apart. Make it again.</p>
+      <h1>Every great cocktail, broken down.</h1>
+      <p class="lede">Order something at a bar you love, then come here to see exactly what's in it — the ratio, the technique, the story behind it — so you can actually recreate it at home instead of just remembering that you liked it.</p>
+      <p><a href="cocktails.html" style="color:#B98A2E; font-family: var(--font-mono); text-transform:uppercase; font-size:0.85rem; letter-spacing:0.04em;">Browse the cocktails →</a></p>
+    </div>
+  </section>
+
+  <!-- ============ FEATURED COCKTAILS ============
+       This section is populated by JavaScript (see js/home.js), which
+       reads the first few entries out of COCKTAILS in data.js. If you add
+       a new cocktail to the front of that array, it'll show up here too. -->
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Start here</p>
+      <h2>Featured classics</h2>
+      <div class="card-grid" id="featured-grid">
+        <!-- Cards get inserted here by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="wrap">
+      <p class="eyebrow">How this site works</p>
+      <h2>Every ratio, visualised</h2>
+      <p style="max-width:60ch;">Each cocktail page includes a ratio bar — a strip showing exactly how much of the drink is base spirit versus modifier versus citrus. Understanding that balance is the fastest way to actually learn to make good drinks, rather than just following steps.</p>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">Barfly — decode a drink, then make it your own.</div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/illustration.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">Cocktail — Barfly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="site-logo"><svg class="logo-butterfly" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g transform="translate(20,20)">
+          <ellipse cx="-7" cy="-5" rx="9" ry="6" fill="var(--brass)" opacity="0.9" transform="rotate(-20 -7 -5)" />
+          <ellipse cx="7" cy="-5" rx="9" ry="6" fill="var(--brass)" opacity="0.9" transform="rotate(20 7 -5)" />
+          <ellipse cx="-6" cy="6" rx="6" ry="5" fill="var(--rust)" opacity="0.9" transform="rotate(-15 -6 6)" />
+          <ellipse cx="6" cy="6" rx="6" ry="5" fill="var(--rust)" opacity="0.9" transform="rotate(15 6 6)" />
+          <line x1="0" y1="-10" x2="0" y2="10" stroke="var(--paper)" stroke-width="1.5" />
+        </g>
+      </svg>Bar<span>fly</span></a>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="cocktails.html">Cocktails</a>
+        <a href="ingredients.html">Ingredients</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Everything inside #cocktail-content is empty on page load and gets
+       filled in by js/cocktail-detail.js, which reads "?slug=..." from
+       the page's URL, looks up the matching object in COCKTAILS, and
+       builds the whole page from it. Open this file in a browser via
+       cocktail.html?slug=negroni to see it work, or just click through
+       from the cocktails page - the links already include the slug. -->
+  <section class="section">
+    <div class="wrap" id="cocktail-content">
+      <p>Loading...</p>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">Barfly — decode a drink, then make it your own.</div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/ratio-bar.js"></script>
+  <script src="js/illustration.js"></script>
+  <script src="js/cocktail-detail.js"></script>
+</body>
+</html>

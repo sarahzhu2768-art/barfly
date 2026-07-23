@@ -1,0 +1,340 @@
+/* =========================================================================
+   STYLE.CSS
+   -------------------------------------------------------------------------
+   Shared styles for every page on the site. Loaded via
+   <link rel="stylesheet" href="css/style.css"> in each HTML file.
+
+   The colours, fonts, and spacing values are all defined once at the top
+   as CSS custom properties (the --variable-name things inside :root).
+   Change a value there and it updates everywhere it's used — that's the
+   whole point of variables instead of typing the hex code 40 times.
+   ========================================================================= */
+
+:root {
+  /* Colour palette */
+  --ink: #16211C;          /* near-black green, used for dark backgrounds & text */
+  --paper: #EDE6D6;        /* warm parchment, main page background */
+  --paper-dim: #E2DAC7;    /* slightly darker paper, for cards/panels */
+  --brass: #B98A2E;        /* primary accent - spirits, links, highlights */
+  --rust: #A0432B;         /* secondary accent - modifiers, warnings */
+  --sage: #6E7F63;         /* tertiary accent - citrus, calm details */
+  --stone: #8C8272;        /* muted neutral - "other" ingredients, captions */
+  --line: rgba(22, 33, 28, 0.15); /* hairline border colour */
+
+  /* Typography */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", "Courier New", monospace;
+
+  /* Spacing scale, so margins/padding stay consistent everywhere */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+}
+
+/* ---- Reset-ish basics ------------------------------------------------- */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a {
+  color: var(--brass);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+/* Visible keyboard focus ring - important for accessibility */
+a:focus-visible, button:focus-visible, select:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  margin: 0 0 var(--space-2);
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+h3 { font-size: 1.15rem; }
+
+p { margin: 0 0 var(--space-2); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rust);
+}
+
+/* ---- Layout helpers ---------------------------------------------------- */
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 var(--space-3);
+}
+
+.section {
+  padding: var(--space-5) 0;
+}
+
+/* ---- Site header / nav ------------------------------------------------- */
+.site-header {
+  background: var(--ink);
+  color: var(--paper);
+  border-bottom: 3px solid var(--brass);
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-2);
+  padding-bottom: var(--space-2);
+}
+
+.site-logo {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--paper);
+  letter-spacing: -0.01em;
+}
+.site-logo span { color: var(--brass); }
+.site-logo:hover { text-decoration: none; opacity: 0.9; }
+
+.site-nav { display: flex; gap: var(--space-3); }
+.site-nav a {
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+.site-nav a:hover, .site-nav a.active {
+  opacity: 1;
+  color: var(--brass);
+  text-decoration: none;
+}
+
+/* ---- Hero (home page) --------------------------------------------------- */
+.hero {
+  background: var(--ink);
+  color: var(--paper);
+  padding: var(--space-5) 0;
+}
+.hero .eyebrow { color: var(--brass); }
+.hero h1 { color: var(--paper); max-width: 14ch; }
+.hero p.lede {
+  max-width: 50ch;
+  font-size: 1.1rem;
+  color: rgba(237, 230, 214, 0.8);
+}
+
+/* ---- Cards --------------------------------------------------------------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-3);
+}
+
+.cocktail-card {
+  background: var(--paper-dim);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.cocktail-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(22, 33, 28, 0.12);
+}
+.card-illustration { width: 72px; margin-bottom: var(--space-1); }
+.card-illustration svg { width: 100%; height: auto; }
+
+.detail-illustration { width: 150px; float: right; margin: 0 0 var(--space-2) var(--space-3); }
+.detail-illustration svg { width: 100%; height: auto; }
+@media (max-width: 560px) {
+  .detail-illustration { float: none; width: 120px; margin: 0 auto var(--space-3); }
+}
+
+.logo-butterfly { width: 20px; height: 20px; vertical-align: -4px; margin-right: 6px; }
+
+.cocktail-card a.card-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.cocktail-card a.card-title:hover { color: var(--brass); text-decoration: none; }
+.cocktail-card .meta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--stone);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ---- Filter bar (cocktails.html) ----------------------------------------- */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-bottom: var(--space-3);
+}
+.filter-btn {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: transparent;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.filter-btn:hover { background: var(--ink); color: var(--paper); }
+.filter-btn.active { background: var(--brass); border-color: var(--brass); color: var(--ink); }
+
+/* ---- Ratio bar (the site's signature element) ---------------------------- */
+.ratio-bar {
+  display: flex;
+  width: 100%;
+  height: 14px;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  margin: var(--space-1) 0 var(--space-2);
+}
+.ratio-segment { height: 100%; }
+
+.ratio-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--stone);
+  margin-bottom: var(--space-3);
+}
+.ratio-legend .dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 0.35rem;
+  vertical-align: middle;
+}
+
+/* ---- Cocktail detail page -------------------------------------------------- */
+.cocktail-head {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.spec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  margin: var(--space-3) 0;
+}
+.spec-grid dt {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--stone);
+  font-size: 0.7rem;
+}
+.spec-grid dd { margin: 0.2rem 0 0; color: var(--ink); font-weight: 600; }
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: var(--space-4);
+}
+@media (max-width: 720px) {
+  .two-col { grid-template-columns: 1fr; }
+}
+
+.ingredient-list { list-style: none; padding: 0; margin: 0; }
+.ingredient-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed var(--line);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+.ingredient-list li a { color: var(--ink); }
+.ingredient-list li a:hover { color: var(--brass); }
+.ingredient-list .amount { color: var(--rust); font-weight: 600; }
+
+.method-list { padding-left: 1.3rem; }
+.method-list li { margin-bottom: var(--space-2); }
+
+.history-block {
+  background: var(--paper-dim);
+  border-left: 3px solid var(--brass);
+  padding: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+/* ---- Ingredient page ------------------------------------------------------ */
+.ingredient-detail-card {
+  background: var(--paper-dim);
+  border: 1px solid var(--line);
+  padding: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+.ingredient-detail-card .used-in {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  margin-top: var(--space-1);
+}
+
+/* ---- Footer --------------------------------------------------------------- */
+.site-footer {
+  background: var(--ink);
+  color: rgba(237, 230, 214, 0.6);
+  font-size: 0.85rem;
+  text-align: center;
+  padding: var(--space-3) 0;
+}
+
+/* ---- Small utility --------------------------------------------------------- */
+.tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: var(--sage);
+  color: var(--paper);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
